@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-#  schedule:
-#    - cron: "0 0 * * *"
+  schedule:
+    - cron: "0 10,14 * * *"
 
 jobs:
   autogreen:
@@ -16,9 +16,10 @@ jobs:
 
       - name: Auto green
         run: |
-          git config --local user.email "justjavac@gmail.com"
-          git config --local user.name "迷渡"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git config --local user.email "78552423@qq.com"
+          git config --local user.name "eshun"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB }}@github.com/${{ github.repository }}
           git pull --rebase
-          git commit --allow-empty -m "a commit a day keeps your girlfriend away"
+          date +"%Y-%m-%d %H:%M:%S.%N" > keepchange.txt
+          git commit -am "auto green"
           git push
